@@ -29,6 +29,9 @@ closure_duration_plot
 ```
 
 
+``` {r echo=FALSE}
+vacc_trend_chart
+```
 
 You can also embed plots, for example:
 
