@@ -6,6 +6,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
+source("school-closure.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -20,6 +21,17 @@ summary(cars)
 ```
 
 ## Including Plots
+## School Closures
+The following chart show the top 20 countries with the longest school closure. We can see that the difference between one country and other are very significant. Even though the pandemic was global issue the action each country implemented was different.
+
+``` {r echo=FALSE}
+closure_duration_plot
+```
+
+
+``` {r echo=FALSE}
+vacc_trend_chart
+```
 
 You can also embed plots, for example:
 
