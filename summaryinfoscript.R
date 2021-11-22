@@ -5,6 +5,8 @@ library(ggplot2)
 
 # Load the *enrollment_trends* data into a variable. `enrollment_trends` 
 enrollment_trends <- read.csv("school-survey/01_data/011_rawdata/enrollment.csv")
+covid_vaccine_and_case_trends <- read.csv("COVID-19_Vaccination_and_Case_Trends_by_Age_Group.csv")
+covid_testing_policy <- read.csv("covid-19-testing-policy.csv")
 
 #What was the total school enrollment in 2020?           
 total_enrollment_in_2020 <- enrollment_trends %>% 
@@ -35,4 +37,20 @@ highest_enrollment_country_in_2019 <- enrollment_trends %>%
 highest_enrollment_country_in_2019
 
 ##how do i get it to select the one value for the highest_enrollment_country? ^^
+
+#Which date has the highest 7 day average of daily cases reported for children under 12?
+highest_7_day_avg_cases_per_100k <- covid_vaccine_and_case_trends %>% 
+  group_by(Date.Administered) %>% 
+  filter(AgeGroupVacc == "< 12 Years") %>%
+  summarise(seven_day_avg_num = 7-day_avg_group_cases_per_100k,na.rm = TRUE) %>% 
+  filter(seven_day_avg_num == max(7-day_avg_group_cases_per_100k)) %>% 
+  select(countrycode)
+highest_enrollment_country_in_2019
+
+#the summarize gives 0 obs. in the environment
+
+
+
+
+
 
