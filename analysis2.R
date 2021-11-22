@@ -33,11 +33,11 @@ vacc_12_24 <- vacc %>%
    left_join(vacc_12_17, by="date") %>%
    gather(key = vacc, value = percentage, -date)
 
-time_trend_chart <- ggplot(vacc_12_24, aes(x = date, y = percentage, 
+vacc_trend_chart <- ggplot(vacc_12_24, aes(x = date, y = percentage, 
                                            group = vacc, color = vacc)) + 
    geom_line() + 
    scale_y_continuous(labels = scales::percent) + 
    labs(title = "COVID-19 Vaccination Trends by Age Group, United States", 
         x = "Date", y = "Percent of population") + 
    scale_color_manual(values = c("orange4", "steelblue4", "orange", "steelblue1"))
-time_trend_chart
+vacc_trend_chart
