@@ -6,19 +6,15 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-source("school-closure.R")
+source("school-closure.R", "summaryinfoscript.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Summary Information
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Due to the school closures during COVID-19, over a billion children are at risk of falling behind in school. To keep students safe, countries have implemented virtual learning and we believe that this change has affected countless students. Our group wanted to explore this domain more, as we are all students pursuing higher education. We tried to look at the impacts of COVID-19 on the global education system to see if there were any national trends correlated with Covid-19. 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
+The total school enrollment in 2020 was `r total_enrollment_in_2020`.`r highest_total_enrollment_year_2015to2020` was the year from 2015 to 2020 with the highest total enrollment of students. We found that `r highest_enrollment_country_in_2019` had the highest school enrollment in 2019. `r highest_7_day_avg_cases_per_100k` had the highest 7 day average of daily cases reported for children ages 12-15. Austria's testing policy on 4/25/20 was `r austria_testing_policy`.
 
 ## Including Plots
 ## School Closures
