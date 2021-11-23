@@ -33,7 +33,7 @@ vacc_12_24 <- vacc %>%
    left_join(vacc_12_17, by="date") %>%
    gather(key = vacc, value = percentage, -date)
 
-vacc_trend_chart <- ggplot(vacc_12_24, aes(x = date, y = percentage, 
+vacc_trend_chart <- ggplot(vacc_12_24, aes(x = date, y = percentage / 100, 
                                            group = vacc, color = vacc)) + 
    geom_line() + 
    scale_y_continuous(labels = scales::percent) + 
