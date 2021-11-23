@@ -6,8 +6,11 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-source("school-closure.R", "summaryinfoscript.R")
+source("./summaryinfoscript.R")
+source("./analysis2.R")
+source("./school-closure.R")
 knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
 ```
 
 ## Summary Information
