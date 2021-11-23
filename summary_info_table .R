@@ -80,19 +80,4 @@ summary_table <- df %>%
 View(summary_table)
 
 
-  
-  # data.frame(total_enrollment_in_2020=c(total_enrollment_in_2020),
-  #                highest_total_enrollment_year_2015to2020 = highest_total_enrollment_year_2015to2020,
-  #                highest_enrollment_country_in_2019 = highest_enrollment_country_in_2019,
-  #                highest_7_day_avg_cases_per_100k = highest_7_day_avg_cases_per_100k,
-  #                austria_testing_policy = austria_testing_policy)
-
-
-
-
-View(summary_table)
-
-
-
-
 
