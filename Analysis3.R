@@ -9,7 +9,6 @@ library(leaflet)
 
 
 testingpolicies <- read.csv(file = "covid-19-testing-policy.csv", stringsAsFactors = FALSE)
-View(testingpolicies)
 
 #country <- testingpolicies %>%
 #  filter(Entity == "China")
@@ -32,7 +31,6 @@ country <- testingpolicies %>%
   summarise(Day = n())
 #sort by day, increasing
 
-View(country)
 
 #daysofpolicies <- ggplot(country) +
 #  geom_polygon(
