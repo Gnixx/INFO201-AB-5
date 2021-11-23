@@ -9,6 +9,7 @@ output: html_document
 source("./summaryinfoscript.R")
 source("./analysis2.R")
 source("./school-closure.R")
+source("./Analysis3.R")
 knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
 ```
@@ -56,3 +57,10 @@ vacc_trend_chart
 ```
 
 >This chart is made from "COVID-19 Vaccination and Case Trends by Age Group, United States" dataset collected by CDC (Centers for Disease Control and Prevention). It shows the COVID-19 Vaccination Trends in 2021 in people aged from 12 to 24 in United States. The result chart reveals that there was a great increase of people accepting vaccination from April, but the total percentage till now is still very low and people who accepted one dose is about a time more than those who complete a whole serie. A surprising fact exposed by the chart is that, there are more people get vaccination from 12 to 17 group than those from 18 to 24.
+
+### Chart 3
+``` {r echo=FALSE}
+daysofpolicies
+```
+
+>Here we see a scatter plot depicting the countries with the highest level of Covid Testing policies (3), which means taht tests are avaliable to everyone, whether they have symptoms or not. Each dot depicts a country and the number of days this policy has been available. Data for this map was gathered from Our World in Data.

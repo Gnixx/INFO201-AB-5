@@ -30,6 +30,7 @@ country <- testingpolicies %>%
   filter(testing_policy == "3") %>% 
   group_by(Entity) %>%
   summarise(Day = n())
+#sort by day, increasing
 
 View(country)
 
@@ -47,7 +48,8 @@ View(country)
 
 
 daysofpolicies <- ggplot(country, aes(x = Entity, y = Day)) +
-  geom_point()
+  geom_point() +
+  ggtitle("Countries testing policy levels")
 
 
 ggplotly(daysofpolicies)
