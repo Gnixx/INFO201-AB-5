@@ -69,14 +69,13 @@ austria_testing_policy
 
 # Creating a table of summary information ---------------------------------------------
 
-df <- group_by(total_enrollment_in_2020,
+summary_table <- group_by(total_enrollment_in_2020,
                           highest_total_enrollment_year_2015to2020,
                           highest_enrollment_country_in_2019,
                           highest_7_day_avg_cases_per_100k,
                           austria_testing_policy)
+
   
-summary_table <- df %>%
-                  group_by
 View(summary_table)
 
 
