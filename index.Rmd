@@ -14,13 +14,18 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Due to the school closures during COVID-19, over a billion children are at risk of falling behind in school. To keep students safe, countries have implemented virtual learning and we believe that this change has affected countless students. Our group wanted to explore this domain more, as we are all students pursuing higher education. We tried to look at the impacts of COVID-19 on the global education system to see if there were any national trends correlated with Covid-19. 
 
+In this report, we found the following variables:
+- `"total_enrollment_in_2020"`
+- `"highest_total_enrollment_year_2015to2020"`
+- `"highest_enrollment_country_in_2019"`
+- `"highest_7_day_avg_cases_per_100k"`
+- `" austria_testing_policy"`
+
 The total school enrollment in 2020 was `r total_enrollment_in_2020`.`r highest_total_enrollment_year_2015to2020` was the year from 2015 to 2020 with the highest total enrollment of students. We found that `r highest_enrollment_country_in_2019` had the highest school enrollment in 2019. `r highest_7_day_avg_cases_per_100k` had the highest 7 day average of daily cases reported for children ages 12-15. Austria's testing policy on 4/25/20 was `r austria_testing_policy`.
 
 ``` {r echo=FALSE}
 summary_table
 ```
-
-A table of summary information is created above. 
 
 
 ## Including Plots
