@@ -53,7 +53,8 @@ closure_duration_plot <- ggplot(data = closure_duration_top) +
   geom_col(aes(x = country_name, y = full_closure_inweeks, fill = "red")) +
   coord_flip() +
   xlab("Country") + 
-  ylab("Weeks")                 +
+  ylab("Weeks") +
   ggtitle("Top 20 Countries with Longest School Closure ")  + 
+  scale_fill_manual(values = c("orange4")) +
   theme(legend.position="none")
 
