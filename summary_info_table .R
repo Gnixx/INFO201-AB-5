@@ -75,7 +75,6 @@ summary_table <- group_by(total_enrollment_in_2020,
                           highest_7_day_avg_cases_per_100k,
                           austria_testing_policy)
 
-  
 View(summary_table)
 
 
