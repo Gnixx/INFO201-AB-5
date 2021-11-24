@@ -53,6 +53,8 @@ College_cases <- Colleges %>%
    group_by(state) %>%
    summarise(state_sum = sum(cases))
 
+date <- unique(Colleges$date)
+
 highest_state <- College_cases %>%
    filter(state_sum == max(state_sum)) %>%
    pull(state)
