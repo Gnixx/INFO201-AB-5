@@ -7,6 +7,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 source("./summaryinfoscript.R")
+source("./map.R")
 source("./analysis1.R")
 source("./analysis2.R")
 source("./analysis3.R")
@@ -57,8 +58,13 @@ Due to the school closures during COVID-19, over a billion children are at risk 
 - **`r highest_enrollment_country_in_2019`** had the highest school enrollment in 2019. 
 - **`r highest_7_day_avg_cases_per_100k`** had the highest 7 day average of daily cases reported for children ages 12-15. 
 - Austria's testing policy on 4/25/20 was **`r austria_testing_policy`**.
-  
-  
+
+## Map of Covid-19 Cases in United States' Colleges and Universities 
+``` {r echo=FALSE}
+cases_map
+```
+
+
 ## Aggregate Table Script
 #### Total Cases of COVID-19 from Colleges and Universities in Each State（updated on `r date`）
 ``` {r echo=FALSE}
