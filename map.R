@@ -59,7 +59,7 @@ cases_map <- plot_usmap(
   blank_theme +
   scale_fill_gradientn(
     colours = c("white", "brown"),
-    breaks = c(10, 100, 1000, 10000),
+    breaks = c(10, 100, 1000, 10000, 100000),
     trans = "log10", name = "Covid-19 Cases in United States' Colleges and Universities"
   ) +
   labs(title = "Covid-19 Cases in United States' Colleges and Universities") +
