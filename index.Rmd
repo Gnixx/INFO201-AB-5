@@ -94,4 +94,4 @@ vacc_trend_chart
 daysofpolicies
 ```
 
->Here we see a scatter plot depicting the countries with the highest level of Covid Testing policies (3), which means that tests are avaliable to everyone, whether they have symptoms or not. Each dot depicts a country and the number of days this policy has been available. Data for this map was gathered from Our World in Data.
+>Here we see a pie chart depicting the top 10 countries with the highest level of Covid Testing policies (3), which means that tests are avaliable to everyone, whether they have symptoms or not. Each of these 10 countries has held this universal policy for the longest out of all countries.
