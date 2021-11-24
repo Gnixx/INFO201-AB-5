@@ -30,9 +30,7 @@ The total school enrollment in 2020 was `r total_enrollment_in_2020`.`r highest_
 
 The table of summary information is shown below:
 
-``` {r echo=FALSE}
-summary_table
-```
+
 
 =======
 - The total school enrollment in 2020 was `r total_enrollment_in_2020`.
@@ -63,4 +61,4 @@ vacc_trend_chart
 daysofpolicies
 ```
 
->Here we see a scatter plot depicting the countries with the highest level of Covid Testing policies (3), which means taht tests are avaliable to everyone, whether they have symptoms or not. Each dot depicts a country and the number of days this policy has been available. Data for this map was gathered from Our World in Data.
+>Here we see a scatter plot depicting the countries with the highest level of Covid Testing policies (3), which means that tests are avaliable to everyone, whether they have symptoms or not. Each dot depicts a country and the number of days this policy has been available. Data for this map was gathered from Our World in Data.
