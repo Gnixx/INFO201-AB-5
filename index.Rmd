@@ -25,8 +25,15 @@ Due to the school closures during COVID-19, over a billion children are at risk 
 - Austria's testing policy on 4/25/20 was `r austria_testing_policy`.
 
 
-The table of summary information is shown below:
+## Aggregate Table Script
 
+``` {r echo=FALSE}
+College_cases_table
+```
+
+- The table shows the cases of COVID-19 from each state's colleges and universities, including every four-year public institution and every private college that competes in N.C.A.A. sports, by May 26, 2021.
+- The variable "state_sum" is the total number of reported Covid-19 cases among university students and employees in all fields in each state since the beginning of the pandemic.
+- Colleges and universities in 'r highest_state' has the highest number of COVID cases since the beginning of the pandemic by May 26, 2021.
 
 
 ## Chart Scripts

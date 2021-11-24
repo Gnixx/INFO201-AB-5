@@ -41,3 +41,20 @@ vacc_trend_chart <- ggplot(vacc_12_24, aes(x = date, y = percentage / 100,
         x = "Date", y = "Percent of population") + 
    scale_color_manual(values = c("orange4", "steelblue4", "orange", "steelblue1"))
 vacc_trend_chart
+
+
+# Aggregate Table Script
+# vaccination and cases 21 summer 
+
+Colleges <- read.csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/colleges/colleges.csv")
+Colleges$location <- paste(Colleges$county, Colleges$city)
+College_cases <- Colleges %>%
+   select(state, location, cases) %>%
+   group_by(state) %>%
+   summarise(state_sum = sum(cases))
+
+highest_state <- College_cases %>%
+   filter(state_sum == max(state_sum)) %>%
+   pull(state)
+
+College_cases_table <- knitr::kable(College_cases)
