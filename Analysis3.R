@@ -9,8 +9,7 @@ library(leaflet)
 
 
 library(readr)
-covid_19_testing_policy <- read_csv("covid-19-testing-policy.csv")
-View(covid_19_testing_policy)
+testingpolicies <- read_csv("covid-19-testing-policy.csv")
 
 
 # FILTER COUNTRIES WITH HIGHEST TESTING POLICY FOR LONGEST TIME
