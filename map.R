@@ -4,11 +4,12 @@ library(stringr)
 library(dplyr)
 library(ggplot2)
 library(wesanderson)
-library("usmap")
+library(usmap)
 
 # Loading data -------------------------------------------------------------------------
 
-colleges <- read.csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/colleges/colleges.csv")
+Colleges <- read.csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/colleges/colleges.csv")
+source("./analysis2.R")
 
 # Map -------------------------------------------------------------------------
 
@@ -35,27 +36,13 @@ blank_theme <- theme_bw() +
 #     mutate = sum(total_pop / aapi_jail_pop)
 #   )
 
-colleges$location <- paste(colleges$county, colleges$city)
-
-college_cases <- colleges %>%
-  select(state, location, cases) %>%
-  group_by(state) %>%
-  summarise(state_sum = sum(cases))
-
-states <- college_cases %>%
-  pull(state)
-
-date <- unique(colleges$date)
-
-highest_state <- college_cases %>%
-  filter(state_sum == max(state_sum)) %>%
-  pull(state)
+# states <- college_cases %>%
+#   pull(state)
 
 cases_map <- plot_usmap(
-  data = college_cases, values = states, color = "black",
-  name = "Covid-19 Cases in United States' Colleges and Universities"
+  data = College_cases, values = "state_sum", color = "black",
+  name = "Covid-19 Cases in Colleges and Universities"
 ) +
-  coord_fixed(1) +
   blank_theme +
   scale_fill_gradientn(
     colours = c("white", "brown"),
@@ -64,3 +51,4 @@ cases_map <- plot_usmap(
   ) +
   labs(title = "Covid-19 Cases in United States' Colleges and Universities") +
   theme(legend.position = "right")
+
