@@ -34,6 +34,7 @@ Due to the school closures during COVID-19, over a billion children are at risk 
 cases_map
 ```
 
+The map above displays the Covid-19 cases in colleges and universities across the United States. The shades of color indicate the amount of cases in each state. As we can see that Texas has the darkest shade, this means it has the most amount of Covid cases in that specific state. States, such as American Samoa, Marshall Islands, and Northern Mariana Islands, are recorded to have none cases, have the lightest colors shown on the map. 
 
 ## Aggregate Table Script
 #### Total Cases of COVID-19 from Colleges and Universities in Each State（updated on `r date`）

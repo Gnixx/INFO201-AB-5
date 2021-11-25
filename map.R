@@ -36,12 +36,10 @@ blank_theme <- theme_bw() +
 #     mutate = sum(total_pop / aapi_jail_pop)
 #   )
 
-# states <- college_cases %>%
-#   pull(state)
+cases <- data.frame(College_cases)
 
 cases_map <- plot_usmap(
-  data = College_cases, values = "state_sum", color = "black",
-  name = "Covid-19 Cases in Colleges and Universities"
+  data = cases, values = "state_sum", color = "black"
 ) +
   blank_theme +
   scale_fill_gradientn(
