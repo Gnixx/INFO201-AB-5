@@ -7,10 +7,10 @@ output: html_document
 
 ```{r setup, include=FALSE}
 source("./summaryinfoscript.R")
-source("./map.R")
 source("./analysis1.R")
 source("./analysis2.R")
 source("./analysis3.R")
+source("./map.R")
 knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
 ```
@@ -29,12 +29,6 @@ Due to the school closures during COVID-19, over a billion children are at risk 
 - **`r highest_7_day_avg_cases_per_100k`** had the highest 7 day average of daily cases reported for children ages 12-15. 
 - Austria's testing policy on 4/25/20 was **`r austria_testing_policy`**.
 
-## Map of Covid-19 Cases in United States' Colleges and Universities 
-``` {r echo=FALSE}
-cases_map
-```
-
-The map above displays the Covid-19 cases in colleges and universities across the United States. The shades of color indicate the amount of cases in each state. As we can see that Texas has the darkest shade, this means it has the most amount of Covid cases in that specific state. States, such as American Samoa, Marshall Islands, and Northern Mariana Islands, are recorded to have none cases, have the lightest colors shown on the map. 
 
 ## Aggregate Table Script
 #### Total Cases of COVID-19 from Colleges and Universities in Each State（updated on `r date`）
@@ -71,3 +65,11 @@ daysofpolicies
 ```
 
 >Here we see a pie chart depicting the top 10 countries with the highest level of Covid Testing policies (3), which means that tests are avaliable to everyone, whether they have symptoms or not. Each of these 10 countries has held this universal policy for the longest out of all countries.
+
+### Chart 4
+  
+``` {r echo=FALSE}
+cases_map
+```
+
+>The map above displays the Covid-19 cases in colleges and universities across the United States. The shades of color indicate the amount of cases in each state. As we can see that Texas has the darkest shade, this means it has the most amount of Covid cases in that specific state. States, such as American Samoa, Marshall Islands, and Northern Mariana Islands, are recorded to have none cases, have the lightest colors shown on the map. 

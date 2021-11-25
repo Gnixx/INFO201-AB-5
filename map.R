@@ -36,17 +36,17 @@ blank_theme <- theme_bw() +
 #     mutate = sum(total_pop / aapi_jail_pop)
 #   )
 
-cases <- data.frame(College_cases)
 
 cases_map <- plot_usmap(
-  data = cases, values = "state_sum", color = "black"
+  data = College_cases, values = "state_sum", color = "black"
 ) +
   blank_theme +
   scale_fill_gradientn(
     colours = c("white", "brown"),
     breaks = c(10, 100, 1000, 10000, 100000),
-    trans = "log10", name = "Covid-19 Cases in United States' Colleges and Universities"
+    trans = "log10", name = "number of cases"
   ) +
   labs(title = "Covid-19 Cases in United States' Colleges and Universities") +
   theme(legend.position = "right")
 
+cases_map
