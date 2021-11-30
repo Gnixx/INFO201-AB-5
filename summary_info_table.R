@@ -56,7 +56,8 @@ highest_7_day_avg_cases_per_100k <- covid_vaccine_and_case_trends %>%
   filter(AgeGroupVacc == 	"12 - 15 Years") %>%
   summarise(seven_day_avg_num = X7.day_avg_group_cases_per_100k,na.rm = TRUE) %>% 
   filter(seven_day_avg_num == max(seven_day_avg_num)) %>% 
-  select(Date.Administered)
+  pull(Date.Administered) %>% 
+  as.Date("%m/%d/%y") 
 highest_7_day_avg_cases_per_100k
 
 ##What was Austria's testing policy on 4/25/20?

@@ -24,10 +24,10 @@ highest_total_enrollment_year_2015to2020 <- enrollment_trends %>%
   filter(enrollment_num == max(enrollment_num)) %>% 
   pull(year_enrollment)
   highest_total_enrollment_year_2015to2020
-
   
-#Which country had the highest school enrollment in 2019? 
+#Which country had the lowest school enrollment in 2019? 
 highest_enrollment_country_in_2019 <- enrollment_trends %>% 
+  filter(countrycode != "WLD") %>% 
   group_by(countrycode) %>% 
   filter(year_enrollment == 2019) %>%
   summarise(enrollment_num = enrollment,na.rm = TRUE) %>% 
@@ -42,7 +42,8 @@ highest_7_day_avg_cases_per_100k <- covid_vaccine_and_case_trends %>%
   filter(AgeGroupVacc == 	"12 - 15 Years") %>%
   summarise(seven_day_avg_num = X7.day_avg_group_cases_per_100k,na.rm = TRUE) %>% 
   filter(seven_day_avg_num == max(seven_day_avg_num)) %>% 
-  select(Date.Administered)
+  pull(Date.Administered) %>% 
+  as.Date("%m/%d/%y") 
 highest_7_day_avg_cases_per_100k
 
 ##What was Austria's testing policy on 4/25/20?
