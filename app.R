@@ -1,0 +1,18 @@
+#app
+rm(list = ls())
+
+library(shiny)
+library(plotly)
+library(dplyr)
+library(ggplot2)
+source("app_server.R")
+source("app_ui.R")
+
+#insert dataset
+# country_data <- read.csv("https://raw.githubusercontent.com/worldbank/school-survey/master/01_data/011_rawdata/wbg_country_metadata.csv")
+# school_data <- read.csv("https://raw.githubusercontent.com/worldbank/school-survey/master/01_data/011_rawdata/enrollment.csv")
+# vacc <- read.csv("Vaccination.csv")
+# Colleges <- read.csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/colleges/colleges.csv")
+# testingpolicies <- read.csv("covid-19-testing-policy.csv")
+
+shinyApp(ui = ui, server = server)
