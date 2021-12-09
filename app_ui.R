@@ -49,17 +49,26 @@ pie_panel <- tabPanel(
 conclusionTab <- tabPanel(
   "Conclusion",
   titlePanel("Conclusion"),
-  p("School closures: One key takeaway from our project was that our data was very inconclusive.
-    the data exposes information about national education responses to school
-    closures due to COVID-19 pandemic. This specific data was collected between
-    February and May 2021. It shows the government responses to school (from preschool to secondary) closures.. 
-    We learned that schools began to reopen the more vaccinations were
-    available and being given out to patients."),
-  p("National trends in vaccinations and cases of covid-19 grouped by age.jkfhskfjk: nfaknfsnsnfsll."),
-  p("Contains lots of information pertaining to government’s response to Covid-19, including covid
-    testing availability, school closures, travel restriction and vaccination rates and availability. We learned that policies starting increasing in number when vaccinations were administered."),
-  p("Lastly, as a team, we learned how important communication is when working in 
-    seperate files and merging them together at the same time.")
+  p("One key takeaway from the school closures dataset was how the data
+  collected is not always what you expect it to be. For example, looking at
+  the top 20 countries with school closures, we were looking for any patterns
+  with a higher number of school closures within a certain geographic area.
+  However, it was more widespread than me thought. Since China's school closures
+  were within the top 20 countries, we expected more East Asian countries
+  in the top 20 countries with school closures than were actually listed 
+  in our chart."),
+  p("A second takeaway coming from the Vaccinations dataset was 
+  more people in both age groups 12-17 and 18-24 had a higher percentage of
+  the population taking Dose 1 rather than completing both doses. Within these
+  two age groups, it surprised us that the group ages 12-17 had a higher
+  percetage of the population getting their first dose."),
+  p("A takeaway we had from the Covid-19 testing policy dataset
+  was how long testing policy 3 was available to people and how Covid-19
+  tests were becoming more readily available to the general population overtime. 
+  Testing policy 3 allowed for more people to gain access to Covid-19 testing
+  which also had an effect on reopenings of schools for each country. However,
+  a lot of countries like Austrailia still had more limited testing
+  options overtime.")
 )
 
 # ui
