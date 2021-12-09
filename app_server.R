@@ -21,8 +21,11 @@ df <- read.csv("docs/COVID-19_Vaccination_and_Case_Trends.csv") %>%
 df$Date.Administered <- NULL
 df$Date <- as.Date(df$Date, format = "%m/%d")
 
-testingpolicies <- read_csv("docs/covid-19-testing-policy.csv")
-
+# country <- read_csv("docs/covid-19-testing-policy.csv") %>%
+#   filter(testing_policy == "3") %>%
+#   group_by(Entity) %>%
+#   summarise(Day = n()) %>%
+#   sample_n(15) # input$countrychoice
 
 
 ## Start shinyServer
@@ -33,7 +36,6 @@ server <- function(input, output) {
       filter(AgeGroup == input$age) %>%
       select(Date, OneDose, FullyVaccinated) %>%
       gather(key = Vacc, value = percentage, -Date)
-
 
     p <- ggplot(data, aes(
       x = Date, y = percentage / 100,
@@ -52,23 +54,17 @@ server <- function(input, output) {
   })
 
   ## pie
-  output$pie <- renderPlotly({
-    country <- testingpolicies %>%
-      filter(testing_policy == "3") %>%
-      group_by(Entity) %>%
-      summarise(Day = n()) %>%
-      sample_n(15) # input$countrychoice)
-
-    pieplot <- plot_ly(country,
-      labels = ~Entity,
-      values = ~Day, type = "pie"
-    ) %>%
-      layout(
-        title = "Countries testing policy levels",
-        xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-        yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE)
-      )
-    pieplot
-    # return(pieplot)
-  })
+  # output$pie <- renderPlotly({
+  #   pieplot <- plot_ly(country,
+  #     labels = ~Entity,
+  #     values = ~Day, type = "pie"
+  #   ) %>%
+  #     layout(
+  #       title = "Countries testing policy levels",
+  #       xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+  #       yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE)
+  #     )
+  #   # pieplot
+  #   return(pieplot)
+  # })
 }

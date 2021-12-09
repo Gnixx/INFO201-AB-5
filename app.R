@@ -1,12 +1,9 @@
 #app
-rm(list = ls())
-
+#rm(list = ls())
 library(shiny)
-library(plotly)
-library(dplyr)
-library(ggplot2)
-source("app_server.R")
-source("app_ui.R")
+
+source("app_ui.R", local=TRUE)
+source("app_server.R", local=TRUE)
 
 #insert dataset
 # country_data <- read.csv("https://raw.githubusercontent.com/worldbank/school-survey/master/01_data/011_rawdata/wbg_country_metadata.csv")
