@@ -1,3 +1,6 @@
+library(shiny)
+library(plotly)
+
 # introduction
 introductionTab <- tabPanel(
   "Introduction",
@@ -15,6 +18,31 @@ introductionTab <- tabPanel(
   p("COVID-19 Testing Policities Tracking Covid-19 at U.S. Collegtes and Universities", a(href="..", "Click here for data!")),
   p(""),
   p("The total school enrollment in 2020 was")
+)
+
+testingpolicies <- read_csv("covid-19-testing-policy.csv")
+pie_sidebar_content <- sidebarPanel(
+  
+  selectInput(
+    label = "choose country",
+    choices = country$Entity,
+    inputId = "countrychoice"
+  )
+)
+
+pie_main_content <- mainPanel(
+  plotlyOutput("pie")
+)
+
+pie_panel <- tabPanel(
+  "Pie Chart",
+  # titlePanel("Countries with highest level testing policy; by time"),
+  sidebarLayout(
+    
+    pie_sidebar_content,
+    
+    pie_main_content
+  )
 )
 
 # conclusion
@@ -38,5 +66,6 @@ conclusionTab <- tabPanel(
 ui <- navbarPage(
   "Final Deliverable",
   introductionTab,
+  pie_panel,
   conclusionTab,
 )
