@@ -64,7 +64,7 @@ server <- function(input, output) {
     plots <- lapply(vars, function(var) {
       plot_ly(data, x = ~Date, y = as.formula(paste0("~", var))) %>%
         add_lines(name = var) %>%
-        layout(title = paste("COVID-19 Cases Trends in", input$age))
+        layout(title = paste("COVID-19 Trends in", input$age))
     })
     subplot(plots, nrows = length(plots), shareX = TRUE, titleX = FALSE)
   })
