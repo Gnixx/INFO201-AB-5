@@ -2,7 +2,19 @@
 introductionTab <- tabPanel(
   "Introduction",
   titlePanel("Introduction"),
-  p("filler text.")
+  h3("(Name of Project)"),
+  p("Due to  the school closures during COVID-19, over a billion children are at 
+    risk of falling behind in school. To keep students safe, countries have implemented 
+    virtual learning and we believe that this change has affected countless students. 
+    Our group wanted to explore this domain more, as we are all students pursuing higher 
+    education. We tried to look at the impacts of COVID-19 on the global education 
+    system to see if there were any national trends correlated with Covid-19."),
+  p("For this project, we looked at three datasets. They are:"),
+  p("National Education Responses to COVID-19 School Closures", a(href="..", "Click here for data!")), 
+  p("COVID-19 Vaccination and Case Trends by Age Group, United States", a(href="..", "Click here for data!")),
+  p("COVID-19 Testing Policities Tracking Covid-19 at U.S. Collegtes and Universities", a(href="..", "Click here for data!")),
+  p(""),
+  p("The total school enrollment in 2020 was")
 )
 
 # conclusion
