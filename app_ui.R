@@ -1,11 +1,6 @@
 library(shiny)
 library(plotly)
 
-country <- read_csv('./docs/covid-19-testing-policy.csv') %>%
-   filter(testing_policy == "3") %>%
-   group_by(Entity) %>%
-   summarise(Day = n()) %>%
-   sample_n(15) # input$countrychoice
 
 # introduction
 introductionTab <- tabPanel(
@@ -20,22 +15,24 @@ introductionTab <- tabPanel(
     system to see if there were any national trends correlated with Covid-19."),
   p("There are some examples of data drive project that we found related to this domain:"),
   tags$ul(
-    tags$li("Unesco collected data monitoring school closures globally due to 
-            COVID-19 and their impact on learners"), 
-    tags$li("Another study conducted by Unesco looked at the total duration of school 
-            closures during the pandemic and how this number"), 
-    tags$li("A study by the Economic Policy Institute researched how learning and online 
+    tags$li("Unesco collected data monitoring school closures globally due to
+            COVID-19 and their impact on learners"),
+    tags$li("Another study conducted by Unesco looked at the total duration of school
+            closures during the pandemic and how this number"),
+    tags$li("A study by the Economic Policy Institute researched how learning and online
             instruction during the pandemic has affected engagement, teaching, and learning"),
     tags$li("The CDC did a study on vaccination coverage among adolescents from the ages 13-17")
   ),
   p("We studied three datasets in this project. They are:"),
   tags$ul(
-    tags$li("National Education Responses to COVID-19 School Closures", 
-            a(href = "https://en.unesco.org/sites/default/files/duration_school_closures.csv", "Click here for data!")), 
+    tags$li(
+      "National Education Responses to COVID-19 School Closures",
+      a(href = "https://en.unesco.org/sites/default/files/duration_school_closures.csv", "Click here for data!")
+    ),
     p(),
-    p("The data was collected by the following organizations Scientific and Cultural 
-    Organization (UNESCO), the United Nations Children's Fund (UNICEF), the World 
-    Bank, and the Organization for Economic Co-operation and Development (OECD) 
+    p("The data was collected by the following organizations Scientific and Cultural
+    Organization (UNESCO), the United Nations Children's Fund (UNICEF), the World
+    Bank, and the Organization for Economic Co-operation and Development (OECD)
     conducted a Survey on National Education Responses to COVID-19 School Closures."),
     p("This dataset answers a few questions:"),
     tags$ul(
@@ -46,10 +43,12 @@ introductionTab <- tabPanel(
       tags$li("What did we learn from these datasets?")
     ),
     p(),
-    tags$li("COVID-19 Vaccination and Case Trends by Age Group, United States", 
-            a(href = "https://data.cdc.gov/Vaccinations/COVID-19-Vaccination-and-Case-Trends-by-Age-Group-/gxj9-t96f", "Click here for data!")),
-    p("The data was collected by the Centers for Disease Control and Prevention (CDC). 
-      CDC uses both new and existing information technology to quickly collect data 
+    tags$li(
+      "COVID-19 Vaccination and Case Trends by Age Group, United States",
+      a(href = "https://data.cdc.gov/Vaccinations/COVID-19-Vaccination-and-Case-Trends-by-Age-Group-/gxj9-t96f", "Click here for data!")
+    ),
+    p("The data was collected by the Centers for Disease Control and Prevention (CDC).
+      CDC uses both new and existing information technology to quickly collect data
       about the distribution and administration of COVID-19 vaccines."),
     p(),
     p("This data has 2925 observations (still updating)"),
@@ -59,12 +58,14 @@ introductionTab <- tabPanel(
       tags$li("How did the number of new cases affect the recovery of education?")
     ),
     p(),
-    tags$li("COVID-19 Testing Policities Tracking Covid-19 at U.S. Collegtes and Universities", 
-            a(href = "https://github.com/nytimes/covid-19-data/tree/master/colleges", "Click here for data!")),
-    p("Data was collected by Oxford volunteers across the world, and logged continuously 
+    tags$li(
+      "COVID-19 Testing Policities Tracking Covid-19 at U.S. Collegtes and Universities",
+      a(href = "https://github.com/nytimes/covid-19-data/tree/master/colleges", "Click here for data!")
+    ),
+    p("Data was collected by Oxford volunteers across the world, and logged continuously
       into the OxCGRT (oxford covid govt response tracker)."),
-    p("The data contains lots of information pertaining to government’s response to Covid-19, 
-      including covid testing availability, school closures, travel restriction and 
+    p("The data contains lots of information pertaining to government’s response to Covid-19,
+      including covid testing availability, school closures, travel restriction and
       vaccination rates and availability"),
     p("This dataset answers a few questions:"),
     tags$ul(
@@ -80,7 +81,6 @@ introductionTab <- tabPanel(
   ),
   p(),
   p()
- 
 )
 
 
@@ -115,8 +115,10 @@ schoolClosureSidebar <- sidebarPanel(
   selectInput(
     inputId = "top",
     label = "the top",
-    choices = list("20" = "20",
-                   "40" = "40"),
+    choices = list(
+      "20" = "20",
+      "40" = "40"
+    ),
     selected = "20"
   )
 )
@@ -133,28 +135,26 @@ schoolPanel <- tabPanel(
 )
 
 
-# # Pie Chart
-testingpolicies <- read_csv("docs/covid-19-testing-policy.csv")
-pie_sidebar_content <- sidebarPanel(
-  selectInput(
-    label = "choose country",
-    choices = country$Entity,
-    inputId = "countrychoice"
-  )
-)
-
-pie_main_content <- mainPanel(
-  plotlyOutput("pie")
-)
-
-pie_panel <- tabPanel(
-  "Pie Chart",
-  # titlePanel("Countries with highest level testing policy; by time"),
-  sidebarLayout(
-    pie_sidebar_content,
-    pie_main_content
-  )
-)
+# # # Pie Chart
+# testingpolicies <- read_csv("docs/covid-19-testing-policy.csv")
+# # pie_sidebar_content <- sidebarPanel(
+# #   selectInput(
+# #     label = "choose country",
+# #     choices = country$Entity,
+# #     inputId = "countrychoice"
+# #   )
+# # )
+# 
+# pie_main_content <- mainPanel(
+#   plotlyOutput("pie")
+# )
+# 
+# pie_panel <- tabPanel(
+#   "Pie Chart",
+#   # titlePanel("Countries with highest level testing policy; by time"),
+#   # pie_sidebar_content,
+#   pie_main_content
+# )
 
 # conclusion
 conclusionTab <- tabPanel(
@@ -188,6 +188,6 @@ ui <- navbarPage(
   introductionTab,
   timeline_panel,
   schoolPanel,
-  pie_panel,
+  # pie_panel,
   conclusionTab,
 )
