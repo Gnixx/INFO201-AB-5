@@ -48,6 +48,28 @@ timeline_panel <- tabPanel(
   chart_main
 )
 
+schoolClosureSidebar <- sidebarPanel(
+  selectInput(
+    inputId = "y_axis_input",
+    label = "Choose one",
+    choices = list("Schools Closure" = "closureDurationPlot",
+                   "Partial Closure" = "partialClosurePlot"),
+    selected = "closureDurationPlot"
+  )
+)
+
+schoolClosureMain <- mainPanel(
+  plotlyOutput(outputId = "closureDurationPlot")
+)
+
+schoolTab <- tabPanel(
+  "School Closures",
+  sidebarLayout(
+    schoolClosureSidebar,
+    schoolClosureMain
+  )
+)
+
 
 # # Pie Chart
 # testingpolicies <- read_csv("docs/covid-19-testing-policy.csv")
@@ -103,6 +125,7 @@ ui <- navbarPage(
   "Final Deliverable",
   introductionTab,
   timeline_panel,
+  schoolTab,
   # pie_panel,
   conclusionTab,
 )

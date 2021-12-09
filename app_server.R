@@ -6,6 +6,8 @@ library(tidyverse)
 library(ggplot2)
 library(readr)
 
+source("school_info.R")
+
 ## Read in data
 df <- read.csv("docs/COVID-19_Vaccination_and_Case_Trends.csv") %>%
   mutate(Year = str_sub(Date.Administered, 7, 10)) %>%
@@ -51,6 +53,16 @@ server <- function(input, output) {
 
     fig <- ggplotly(p)
     return(fig)
+  })
+  
+  output$closureDurationPlot <- renderPlotly({
+    
+    return(closure_duration_plotly)
+  })
+  
+  output$partialClosurePlot <- renderPlotly({
+    
+    return(partial_duration_plotly)
   })
 
   ## pie
