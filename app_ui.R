@@ -12,12 +12,69 @@ introductionTab <- tabPanel(
     Our group wanted to explore this domain more, as we are all students pursuing higher
     education. We tried to look at the impacts of COVID-19 on the global education
     system to see if there were any national trends correlated with Covid-19."),
-  p("For this project, we looked at three datasets. They are:"),
-  p("National Education Responses to COVID-19 School Closures", a(href = "..", "Click here for data!")),
-  p("COVID-19 Vaccination and Case Trends by Age Group, United States", a(href = "..", "Click here for data!")),
-  p("COVID-19 Testing Policities Tracking Covid-19 at U.S. Collegtes and Universities", a(href = "..", "Click here for data!")),
-  p(""),
-  p("The total school enrollment in 2020 was")
+  p("There are some examples of data drive project that we found related to this domain:"),
+  tags$ul(
+    tags$li("Unesco collected data monitoring school closures globally due to 
+            COVID-19 and their impact on learners"), 
+    tags$li("Another study conducted by Unesco looked at the total duration of school 
+            closures during the pandemic and how this number"), 
+    tags$li("A study by the Economic Policy Institute researched how learning and online 
+            instruction during the pandemic has affected engagement, teaching, and learning"),
+    tags$li("The CDC did a study on vaccination coverage among adolescents from the ages 13-17")
+  ),
+  p("We studied three datasets in this project. They are:"),
+  tags$ul(
+    tags$li("National Education Responses to COVID-19 School Closures", 
+            a(href = "https://en.unesco.org/sites/default/files/duration_school_closures.csv", "Click here for data!")), 
+    p(),
+    p("The data was collected by the following organizations Scientific and Cultural 
+    Organization (UNESCO), the United Nations Children's Fund (UNICEF), the World 
+    Bank, and the Organization for Economic Co-operation and Development (OECD) 
+    conducted a Survey on National Education Responses to COVID-19 School Closures."),
+    p("This dataset answers a few questions:"),
+    tags$ul(
+      tags$li("What is the longest duration of time that students did online learning?"),
+      tags$li("What country has the lowest number of affected students?"),
+      tags$li("What country has the highest number of affected students?"),
+      tags$li("What did schools do in response to school closures and student performance?"),
+      tags$li("What did we learn from these datasets?")
+    ),
+    p(),
+    tags$li("COVID-19 Vaccination and Case Trends by Age Group, United States", 
+            a(href = "https://data.cdc.gov/Vaccinations/COVID-19-Vaccination-and-Case-Trends-by-Age-Group-/gxj9-t96f", "Click here for data!")),
+    p("The data was collected by the Centers for Disease Control and Prevention (CDC). 
+      CDC uses both new and existing information technology to quickly collect data 
+      about the distribution and administration of COVID-19 vaccines."),
+    p(),
+    p("This data has 2925 observations (still updating)"),
+    p("This dataset answers a few questions:"),
+    tags$ul(
+      tags$li("How did the situation of vaccination affect the recovery of education?"),
+      tags$li("How did the number of new cases affect the recovery of education?")
+    ),
+    p(),
+    tags$li("COVID-19 Testing Policities Tracking Covid-19 at U.S. Collegtes and Universities", 
+            a(href = "https://github.com/nytimes/covid-19-data/tree/master/colleges", "Click here for data!")),
+    p("Data was collected by Oxford volunteers across the world, and logged continuously 
+      into the OxCGRT (oxford covid govt response tracker)."),
+    p("The data contains lots of information pertaining to government’s response to Covid-19, 
+      including covid testing availability, school closures, travel restriction and 
+      vaccination rates and availability"),
+    p("This dataset answers a few questions:"),
+    tags$ul(
+      tags$li("How countries rank with combined restrictions?"),
+      tags$li("What level of specific restrictions each country has?"),
+      tags$ul(
+        tags$li("School and workplace closures, (fully shut down, some open, all open)"),
+        tags$li("Internal and external travel"),
+        tags$li("Restrictions on gathering"),
+        tags$li("Stay at home order, face coverings (recommended to required)")
+      )
+    )
+  ),
+  p(),
+  p()
+ 
 )
 
 
