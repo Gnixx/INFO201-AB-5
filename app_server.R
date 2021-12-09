@@ -38,7 +38,7 @@ server <- function(input, output) {
       gather(key = Vacc, value = percentage, -Date)
 
     p <- ggplot(data, aes(
-      x = Date, y = percentage / 100,
+      x = Date, y = percentage,
       color = Vacc
     )) +
       geom_line() +
