@@ -29,6 +29,24 @@ df$Date <- as.Date(df$Date, format = "%m/%d")
 #   summarise(Day = n()) %>%
 #   sample_n(15) # input$countrychoice
 
+#-----------------School Closure Data ------------------------------------------
+# Extracting needed rows
+closure_duration <- school_closures %>%
+  select(X, X.1, UNESCO.global.dataset.on.the.duration.of.school.closures, X.2) %>%
+  slice(-c(1:18)) %>%
+  summarise(country_name = X,
+            country_code = X.1,
+            full_partial_duration_inweeks = UNESCO.global.dataset.on.the.duration.of.school.closures,
+            full_closure_inweeks = X.2)
+
+#blank theme for plot
+blank_theme <- theme_bw() +
+  theme(
+    plot.background = element_blank(), # remove gray background
+    panel.grid.major = element_blank(), # remove major grid lines
+    panel.grid.minor = element_blank(), # remove minor grid lines
+    panel.border = element_blank(), # remove boarder around plot
+  )
 
 ## Start shinyServer
 server <- function(input, output) {
@@ -53,17 +71,25 @@ server <- function(input, output) {
 
     fig <- ggplotly(p)
     return(fig)
-  })
-  
-  output$closureDurationPlot <- renderPlotly({
-    
-    return(closure_duration_plotly)
-  })
-  
-  output$partialClosurePlot <- renderPlotly({
-    
-    return(partial_duration_plotly)
-  })
+    output$schoolClosure <- renderPlotly({
+      
+      data <- closure_duration %>%
+        top_n(input$top, wt = full_closure_inweeks)
+      
+      closure_plot <- ggplot(data = data) + 
+        geom_col(aes(x = country_name, y = full_closure_inweeks, fill = "red")) +
+        coord_flip() +
+        xlab("Country") + 
+        ylab("Weeks") +
+        ggtitle(paste("Top ", input$top, "Countries with Longest School Closure "))  + 
+        scale_fill_manual(values = c("orange4")) +
+        blank_theme +
+        theme(legend.position="none") 
+      
+      closure_plotly <- ggplotly(closure_plot)
+      
+      return(closure_plotly)
+    })
 
   ## pie
   # output$pie <- renderPlotly({

@@ -107,25 +107,23 @@ timeline_panel <- tabPanel(
 
 schoolClosureSidebar <- sidebarPanel(
   selectInput(
-    inputId = "y_axis_input",
-    label = "Choose one",
-    choices = list("Schools Closure" = "closureDurationPlot",
-                   "Partial Closure" = "partialClosurePlot"),
-    selected = "closureDurationPlot"
+    inputId = "top",
+    label = "the top",
+    choices = list("20" = "20",
+                   "40" = "40"),
+    selected = "20"
   )
 )
 
 schoolClosureMain <- mainPanel(
-  plotlyOutput(outputId = "closureDurationPlot"),
-  plotlyOutput(outputId = 'partialClosurePlot')
+  plotlyOutput("schoolClosure")
 )
 
-schoolTab <- tabPanel(
-  "School Closures",
-  sidebarLayout(
-    schoolClosureSidebar,
-    schoolClosureMain
-  )
+schoolPanel <- tabPanel(
+  "School Closure",
+  titlePanel("School Closure"),
+  schoolClosureSidebar,
+  schoolClosureMain
 )
 
 
@@ -183,7 +181,7 @@ ui <- navbarPage(
   "Final Deliverable",
   introductionTab,
   timeline_panel,
-  schoolTab,
+  schoolPanel,
   # pie_panel,
   conclusionTab,
 )
