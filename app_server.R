@@ -8,7 +8,7 @@ library(readr)
 
 source("school_info.R")
 
-# Read in data
+# Read in data ----------------------------------------------------------------
 ## Timeline data
 df <- read.csv("docs/COVID-19_Vaccination_and_Case_Trends.csv") %>%
   mutate(Year = str_sub(Date.Administered, 7, 10)) %>%
@@ -52,32 +52,24 @@ blank_theme <- theme_bw() +
   )
 
 
-# Start shinyServer
+# Start shinyServer -----------------------------------------------------------
 server <- function(input, output) {
-  ## Timeline
+  ## Timeline ---------------------------
   output$Timeline <- renderPlotly({
     data <- df %>%
       filter(AgeGroup == input$age) %>%
-      select(Date, OneDose, FullyVaccinated) %>%
-      gather(key = Vacc, value = percentage, -Date)
+      select(Date, OneDose, FullyVaccinated, WeeklyCasesPer100k)
 
-    p <- ggplot(data, aes(
-      x = Date, y = percentage,
-      color = Vacc
-    )) +
-      geom_line() +
-      scale_y_continuous(labels = scales::percent) +
-      labs(
-        title = paste("COVID-19 Vaccination Trends in", input$age),
-        x = "Date", y = "Percent of population"
-      ) +
-      scale_color_manual(values = c("orange4", "orange"))
-
-    fig <- ggplotly(p)
-    return(fig)
+    vars <- setdiff(names(data), "Date")
+    plots <- lapply(vars, function(var) {
+      plot_ly(data, x = ~Date, y = as.formula(paste0("~", var))) %>%
+        add_lines(name = var) %>%
+        layout(title = paste("COVID-19 Cases Trends in", input$age))
+    })
+    subplot(plots, nrows = length(plots), shareX = TRUE, titleX = FALSE)
   })
 
-  ## Histogram
+  ## Histogram ---------------------------
   output$schoolClosure <- renderPlotly({
     data <- closure_duration %>%
       top_n(input$top, wt = full_closure_inweeks)
@@ -98,7 +90,7 @@ server <- function(input, output) {
   })
 
 
-  # ## pie
+  # ## pie ---------------------------
   # output$pie <- renderPlotly({
   #   pieplot <- plot_ly(country,
   #     labels = ~Entity,
