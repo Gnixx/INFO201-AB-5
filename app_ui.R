@@ -1,6 +1,12 @@
 library(shiny)
 library(plotly)
 
+country <- read_csv('./docs/covid-19-testing-policy.csv') %>%
+   filter(testing_policy == "3") %>%
+   group_by(Entity) %>%
+   summarise(Day = n()) %>%
+   sample_n(15) # input$countrychoice
+
 # introduction
 introductionTab <- tabPanel(
   "Introduction",
