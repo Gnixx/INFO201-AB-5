@@ -128,27 +128,27 @@ schoolPanel <- tabPanel(
 
 
 # # Pie Chart
-# testingpolicies <- read_csv("docs/covid-19-testing-policy.csv")
-# pie_sidebar_content <- sidebarPanel(
-#   selectInput(
-#     label = "choose country",
-#     choices = country$Entity,
-#     inputId = "countrychoice"
-#   )
-# )
-# 
-# pie_main_content <- mainPanel(
-#   plotlyOutput("pie")
-# )
-# 
-# pie_panel <- tabPanel(
-#   "Pie Chart",
-#   # titlePanel("Countries with highest level testing policy; by time"),
-#   sidebarLayout(
-#     pie_sidebar_content,
-#     pie_main_content
-#   )
-# )
+testingpolicies <- read_csv("docs/covid-19-testing-policy.csv")
+pie_sidebar_content <- sidebarPanel(
+  selectInput(
+    label = "choose country",
+    choices = country$Entity,
+    inputId = "countrychoice"
+  )
+)
+
+pie_main_content <- mainPanel(
+  plotlyOutput("pie")
+)
+
+pie_panel <- tabPanel(
+  "Pie Chart",
+  # titlePanel("Countries with highest level testing policy; by time"),
+  sidebarLayout(
+    pie_sidebar_content,
+    pie_main_content
+  )
+)
 
 # conclusion
 conclusionTab <- tabPanel(
@@ -182,6 +182,6 @@ ui <- navbarPage(
   introductionTab,
   timeline_panel,
   schoolPanel,
-  # pie_panel,
+  pie_panel,
   conclusionTab,
 )
