@@ -64,3 +64,4 @@ partial_duration_plot <- ggplot(data = partial_closure_top) +
 
 #Using Plotly
 partial_duration_plotly <- ggplotly(partial_duration_plot, tooltip = c("text"))
+

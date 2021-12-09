@@ -59,7 +59,8 @@ schoolClosureSidebar <- sidebarPanel(
 )
 
 schoolClosureMain <- mainPanel(
-  plotlyOutput(outputId = "closureDurationPlot")
+  plotlyOutput(outputId = "closureDurationPlot"),
+  plotlyOutput(outputId = 'partialClosurePlot')
 )
 
 schoolTab <- tabPanel(
