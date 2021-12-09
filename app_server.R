@@ -7,7 +7,7 @@ library(ggplot2)
 library(readr)
 
 ## Read in data
-df <- read.csv("docs/Vaccination.csv") %>%
+df <- read.csv("docs/COVID-19_Vaccination_and_Case_Trends.csv") %>%
   mutate(Year = str_sub(Date.Administered, 7, 10)) %>%
   mutate(Month = str_sub(Date.Administered, 1, 2)) %>%
   mutate(Date = str_sub(Date.Administered, 1, 5)) %>%
