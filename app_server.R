@@ -24,12 +24,7 @@ df <- read.csv("docs/COVID-19_Vaccination_and_Case_Trends.csv") %>%
 df$Date.Administered <- NULL
 df$Date <- as.Date(df$Date, format = "%m/%d")
 
-# ## Piechart data
-# country <- read_csv("./docs/covid-19-testing-policy.csv") %>%
-#   filter(testing_policy == "3") %>%
-#   group_by(Entity) %>%
-#   summarise(Day = n()) %>%
-#   sample_n(15) # input$countrychoice
+
 
 ## Histogram data
 # Extracting needed rows
@@ -91,17 +86,26 @@ server <- function(input, output) {
 
 
   # ## pie ---------------------------
-  # output$pie <- renderPlotly({
-  #   pieplot <- plot_ly(country,
-  #     labels = ~Entity,
-  #     values = ~Day, type = "pie"
-  #   ) %>%
-  #     layout(
-  #       title = "Countries testing policy levels",
-  #       xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-  #       yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE)
-  #     )
-  #   # pieplot
-  #   return(pieplot)
-  # })
+  output$pie <- renderPlotly({
+    ## Piechart data
+    country <- read.csv("covid-19-testing-policy.csv") %>%
+      filter(testing_policy == "3") %>%
+      group_by(Entity) %>%
+      summarise(Day = n()) %>%
+      sample_n(input$slider1) # input$countrychoice
+    
+    slider1 <- seq(0, 100, length.out = input$slider1 + 1)
+    
+    pieplot <- plot_ly(country,
+                       labels = ~Entity,
+                       values = ~Day, type = "pie"
+    ) %>%
+      layout(
+        title = "Countries with most accessible testing policy, by day",
+        xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+        yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE)
+      )
+    return(pieplot)
+    
+  })
 }
