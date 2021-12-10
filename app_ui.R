@@ -23,6 +23,15 @@ introductionTab <- tabPanel(
             instruction during the pandemic has affected engagement, teaching, and learning"),
     tags$li("The CDC did a study on vaccination coverage among adolescents from the ages 13-17")
   ),
+  p("There are some data-driven questions we wish to answer:"),
+  tags$ul(
+    tags$li("What is the total number of the affected students?"),
+    tags$li("What is the percentage of students unenrolled?"),
+    tags$li("How did students perform during school closures?"),
+    tags$li("How many students are unable to set up online learning platforms? Why?"),
+    tags$li("How did changing COVID-19 testing policies affect the number of cases in the US?")
+  ),
+  p(),
   p("We studied three datasets in this project. They are:"),
   tags$ul(
     tags$li(
