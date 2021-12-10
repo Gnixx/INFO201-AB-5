@@ -6,7 +6,7 @@ library(plotly)
 introductionTab <- tabPanel(
   "Introduction",
   titlePanel("Introduction"),
-  h3("Covid and School"),
+  h3("Covid Affecting Education"),
   p("Due to  the school closures during COVID-19, over a billion children are at
     risk of falling behind in school. To keep students safe, countries have implemented
     virtual learning and we believe that this change has affected countless students.
