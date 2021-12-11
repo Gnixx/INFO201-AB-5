@@ -1,7 +1,6 @@
 library(shiny)
 library(plotly)
 
-
 # introduction
 introductionTab <- tabPanel(
   "Introduction",
@@ -13,16 +12,6 @@ introductionTab <- tabPanel(
     Our group wanted to explore this domain more, as we are all students pursuing higher
     education. We tried to look at the impacts of COVID-19 on the global education
     system to see if there were any national trends correlated with Covid-19."),
-  p("There are some examples of data drive project that we found related to this domain:"),
-  tags$ul(
-    tags$li("Unesco collected data monitoring school closures globally due to
-            COVID-19 and their impact on learners"),
-    tags$li("Another study conducted by Unesco looked at the total duration of school
-            closures during the pandemic and how this number"),
-    tags$li("A study by the Economic Policy Institute researched how learning and online
-            instruction during the pandemic has affected engagement, teaching, and learning"),
-    tags$li("The CDC did a study on vaccination coverage among adolescents from the ages 13-17")
-  ),
   p("There are some data-driven questions we wish to answer:"),
   tags$ul(
     tags$li("What is the total number of the affected students?"),
@@ -87,9 +76,7 @@ introductionTab <- tabPanel(
         tags$li("Stay at home order, face coverings (recommended to required)")
       )
     )
-  ),
-  p(),
-  p()
+  )
 )
 
 
