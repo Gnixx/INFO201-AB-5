@@ -6,7 +6,7 @@ library(plotly)
 introductionTab <- tabPanel(
   "Introduction",
   titlePanel(h3("Introduction: Covid Affecting Education")),
-  plotlyOutput("map"),
+  img(src = "COVID-19.png", height = 140, width = 400),
   p("Due to  the school closures during COVID-19, over a billion children are at
     risk of falling behind in school. To keep students safe, countries have implemented
     virtual learning and we believe that this change has affected countless students.
@@ -15,19 +15,19 @@ introductionTab <- tabPanel(
     system to see if there were any national trends correlated with Covid-19."),
   p(strong("There are some data-driven questions we wish to answer:")),
   tags$ul(
-    tags$li("How did students perform during school closures?"),
-    tags$li("How many students are unable to set up online learning platforms? Why?"),
-    tags$li("How did changing COVID-19 testing policies affect the number of cases in the US?"),
-    tags$li("Did the amount of time that a country held a certain COVID-19 testing policy
-            have an association with the number of school closures there were?"),
-    tags$li("Which age group had a higher percentage of people who took both doses
-            of the vaccination?"),
+    tags$li(p("How did students perform during school closures?")),
+    tags$li(p("How many students are unable to set up online learning platforms? Why?")),
+    tags$li(p("How did changing COVID-19 testing policies affect the number of cases in the US?")),
+    tags$li(p("Did the amount of time that a country held a certain COVID-19 testing policy
+            have an association with the number of school closures there were?")),
+    tags$li(p("Which age group had a higher percentage of people who took both doses
+            of the vaccination?")),
   ),
   p(),
   p(strong("We studied three datasets in this project. They are:")),
   tags$ul(
     tags$li(
-      "National Education Responses to COVID-19 School Closures",
+      p("National Education Responses to COVID-19 School Closures"),
       a(href = "https://en.unesco.org/sites/default/files/duration_school_closures.csv", "Click here for data!")
     ),
     p(),
@@ -37,12 +37,12 @@ introductionTab <- tabPanel(
     conducted a Survey on National Education Responses to COVID-19 School Closures."),
     p("This dataset answers a few questions:"),
     tags$ul(
-      tags$li("What is the longest duration of time that students did online learning?"),
-      tags$li("Which countries had the longest duration of school closures?"),
+      tags$li(p("What is the longest duration of time that students did online learning?")),
+      tags$li(p("Which countries had the longest duration of school closures?")),
     ),
     p(),
     tags$li(
-      "COVID-19 Vaccination and Case Trends by Age Group, United States",
+      p("COVID-19 Vaccination and Case Trends by Age Group, United States"),
       a(href = "https://data.cdc.gov/Vaccinations/COVID-19-Vaccination-and-Case-Trends-by-Age-Group-/gxj9-t96f", "Click here for data!")
     ),
     p("The data was collected by the Centers for Disease Control and Prevention (CDC).
@@ -52,10 +52,10 @@ introductionTab <- tabPanel(
     p("This data has 2925 observations (still updating)"),
     p("This dataset answers a few questions:"),
     tags$ul(
-      tags$li("How did the situation of vaccination affect the recovery of education?"),
-      tags$li("How did the number of new cases affect the recovery of education?"),
-      tags$li("Did age group 12-17 or 18-24 have a higher percentage of the population
-              who got Dose 1 of their Covid-19 vaccination?"),
+      tags$li(p("How did the situation of vaccination affect the recovery of education?")),
+      tags$li(p("How did the number of new cases affect the recovery of education?")),
+      tags$li(p("Did age group 12-17 or 18-24 have a higher percentage of the population
+              who got Dose 1 of their Covid-19 vaccination?")),
     )
   )
 )
@@ -132,6 +132,7 @@ testingPanel <- tabPanel(
 conclusionTab <- tabPanel(
   "Conclusion",
   titlePanel(h3("Conclusion")),
+  plotlyOutput("map"),
   p("One key takeaway from the school closures dataset was how the data
   collected is not always what you expect it to be. For example, looking at
   the top 20 countries with school closures, we were looking for any patterns

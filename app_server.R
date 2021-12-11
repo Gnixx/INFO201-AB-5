@@ -11,16 +11,7 @@ source("school_info.R")
 # Read in data ----------------------------------------------------------------
 ## Map data
 closure <- read.csv("docs/Closure Status.csv") %>%
-   mutate(Year = str_sub(Date, 7, 10)) %>%
-   filter(Year >= "2021") %>%
-   mutate(Date = as.Date(Date, "%d/%m")) %>%
-   filter(Date == max(Date))
-closure$Status_num <- str_replace_all(closure$Status, c(
-  "Fully open" = "0",
-  "Academic break" = "0",
-  "Partially open" = "5",
-  "Closed due to COVID-19" = "10"
-))
+   mutate(Date = as.Date(Date, "%d/%m"))
 
 
 ## Timeline data
@@ -63,7 +54,6 @@ blank_theme <- theme_bw() +
 # Start shinyServer -----------------------------------------------------------
 server <- function(input, output) {
   ## Map ---------------------------
-  date <- unique(closure$Date)
   world_map <- map_data("world") %>%
      rename(Country = region) %>%
      left_join(closure, by = "Country")
@@ -77,7 +67,7 @@ server <- function(input, output) {
      #scale_fill_discrete("Purples") +
      scale_fill_manual(values = c("tan2", "tan4", "tan1", "tan3")) +
      labs(fill = "status") +
-     ggtitle(paste("School Closure at", date))
+     ggtitle("School Closure at 2021-02-07 UTC")
   map
 
   ## Timeline ---------------------------
