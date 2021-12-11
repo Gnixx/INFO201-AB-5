@@ -19,8 +19,6 @@ introductionTab <- tabPanel(
     tags$li("How did changing COVID-19 testing policies affect the number of cases in the US?"),
     tags$li("Did the amount of time that a country held a certain COVID-19 testing policy
             have an association with the number of school closures there were?"),
-    tags$li("Did the amount of time that a country held a certain COVID-19 testing policy
-            have an association with the number of school closures there were?"),
     tags$li("Which age group had a higher percentage of people who took both doses
             of the vaccination?"),
   ),
