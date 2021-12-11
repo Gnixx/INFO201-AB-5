@@ -114,7 +114,13 @@ testingPolicies <- sidebarPanel(
 )
 
 testingPoliciesMain <- mainPanel(
-  plotlyOutput("pie")
+  plotlyOutput("pie"),
+  
+  p("This pie chart is depicting the countries who have held
+    the highest level of Covid Testing policies (3), which 
+    means that tests are avaliable to everyone, whether they 
+    have symptoms or not. When you select a random amount of countries, 
+    you can see which ones have held this universal policy for the longest.")
 )
 
 testingPanel <- tabPanel(
