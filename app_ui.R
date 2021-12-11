@@ -1,7 +1,6 @@
 library(shiny)
 library(plotly)
 
-
 # introduction
 introductionTab <- tabPanel(
   "Introduction",

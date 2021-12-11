@@ -1,5 +1,5 @@
-#app
-#rm(list = ls())
+#app.R 
+
 library(shiny)
 
 source("app_ui.R", local=TRUE)
