@@ -11,10 +11,10 @@ source("school_info.R")
 # Read in data ----------------------------------------------------------------
 ## Map data
 closure <- read.csv("docs/Closure Status.csv") %>%
-  mutate(Year = str_sub(Date, 7, 10)) %>%
-  filter(Year >= "2021") %>%
-  mutate(Date = as.Date(Date, "%d/%m")) %>%
-  filter(Date == max(Date))
+   mutate(Year = str_sub(Date, 7, 10)) %>%
+   filter(Year >= "2021") %>%
+   mutate(Date = as.Date(Date, "%d/%m")) %>%
+   filter(Date == max(Date))
 closure$Status_num <- str_replace_all(closure$Status, c(
   "Fully open" = "0",
   "Academic break" = "0",
@@ -64,15 +64,21 @@ blank_theme <- theme_bw() +
 server <- function(input, output) {
   ## Map ---------------------------
   date <- unique(closure$Date)
-  map <- plot_ly(
-    closure,
-    type = "choropleth",
-    locations = ~ closure$ISO,
-    z = ~ closure$Status_num,
-    text = paste("Country: ", closure$Country, "<br>Status:", closure$Status)
-  ) %>%
-    layout(title = paste("School Closure at", date))
-  return(map)
+  world_map <- map_data("world") %>%
+     rename(Country = region) %>%
+     left_join(closure, by = "Country")
+  map <- ggplot(world_map) +
+     geom_polygon(
+        mapping = aes(x = long, y = lat, group = group, fill = Status),
+        color = "white",
+        size = .1
+     ) +
+     # coord_map() +
+     #scale_fill_discrete("Purples") +
+     scale_fill_manual(values = c("tan2", "tan4", "tan1", "tan3")) +
+     labs(fill = "status") +
+     ggtitle(paste("School Closure at", date))
+  map
 
   ## Timeline ---------------------------
   output$Timeline <- renderPlotly({

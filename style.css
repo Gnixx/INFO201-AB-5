@@ -1,0 +1,20 @@
+
+/* Get a fancy font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+
+body {
+  background-color: white;
+  color: #745F4C /* text color */
+}
+
+/* Change header text to imported font */
+h3 {
+  font-family: 'Yusei Magic', sans-serif;
+  color: #97826E
+}
+
+p {
+   font-family: 'Source Sans 3', sans-serif;
+}
+
+/* Make text visible on inputs */

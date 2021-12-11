@@ -5,8 +5,7 @@ library(plotly)
 # introduction
 introductionTab <- tabPanel(
   "Introduction",
-  titlePanel("Introduction"),
-  h3("Covid Affecting Education"),
+  titlePanel(h3("Introduction: Covid Affecting Education")),
   plotlyOutput("map"),
   p("Due to  the school closures during COVID-19, over a billion children are at
     risk of falling behind in school. To keep students safe, countries have implemented
@@ -14,7 +13,7 @@ introductionTab <- tabPanel(
     Our group wanted to explore this domain more, as we are all students pursuing higher
     education. We tried to look at the impacts of COVID-19 on the global education
     system to see if there were any national trends correlated with Covid-19."),
-  p("There are some data-driven questions we wish to answer:"),
+  p(strong("There are some data-driven questions we wish to answer:")),
   tags$ul(
     tags$li("How did students perform during school closures?"),
     tags$li("How many students are unable to set up online learning platforms? Why?"),
@@ -25,7 +24,7 @@ introductionTab <- tabPanel(
             of the vaccination?"),
   ),
   p(),
-  p("We studied three datasets in this project. They are:"),
+  p(strong("We studied three datasets in this project. They are:")),
   tags$ul(
     tags$li(
       "National Education Responses to COVID-19 School Closures",
@@ -83,7 +82,8 @@ chart_main <- mainPanel(
 
 timeline_panel <- tabPanel(
   "Timeline",
-  titlePanel("COVID-19 Vaccination and Case Trends by Age Group, United States"),
+  titlePanel(h3("COVID-19 Vaccination and
+                Case Trends by Age Group, United States")),
   chart_sidebar,
   chart_main
 )
@@ -98,18 +98,16 @@ schoolClosureMain <- mainPanel(
 
 schoolPanel <- tabPanel(
   "School Closure",
-  titlePanel("School Closure"),
+  titlePanel(h3("School Closure")),
   schoolClosureSidebar,
   schoolClosureMain
 )
 
 
 # # # Pie Chart
-
-
 testingPolicies <- sidebarPanel(
   sliderInput("slider1",
-    label = h3("Amount of Countries"), min = 0,
+    label = "Amount of Countries", min = 0,
     max = 100, value = 10
   )
 )
@@ -125,7 +123,7 @@ testingPoliciesMain <- mainPanel(
 
 testingPanel <- tabPanel(
   "Testing Policies",
-  titlePanel("Highest Testing Policies"),
+  titlePanel(h3("Highest Testing Policies")),
   testingPolicies,
   testingPoliciesMain
 )
@@ -133,7 +131,7 @@ testingPanel <- tabPanel(
 # conclusion
 conclusionTab <- tabPanel(
   "Conclusion",
-  titlePanel("Conclusion"),
+  titlePanel(h3("Conclusion")),
   p("One key takeaway from the school closures dataset was how the data
   collected is not always what you expect it to be. For example, looking at
   the top 20 countries with school closures, we were looking for any patterns
@@ -160,11 +158,14 @@ conclusionTab <- tabPanel(
 )
 
 # ui
-ui <- navbarPage(
-  "Final Deliverable",
-  introductionTab,
-  timeline_panel,
-  schoolPanel,
-  testingPanel,
-  conclusionTab,
+ui <- fluidPage(
+  includeCSS("style.css"),
+  navbarPage(
+    "Final Deliverable",
+    introductionTab,
+    timeline_panel,
+    schoolPanel,
+    testingPanel,
+    conclusionTab
+  )
 )
