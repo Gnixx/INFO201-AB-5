@@ -9,6 +9,20 @@ library(readr)
 source("school_info.R")
 
 # Read in data ----------------------------------------------------------------
+## Map data
+closure <- read.csv("docs/Closure Status.csv") %>%
+  mutate(Year = str_sub(Date, 7, 10)) %>%
+  filter(Year >= "2021") %>%
+  mutate(Date = as.Date(Date, "%d/%m")) %>%
+  filter(Date == max(Date))
+closure$Status_num <- str_replace_all(closure$Status, c(
+  "Fully open" = "0",
+  "Academic break" = "0",
+  "Partially open" = "5",
+  "Closed due to COVID-19" = "10"
+))
+
+
 ## Timeline data
 df <- read.csv("docs/COVID-19_Vaccination_and_Case_Trends.csv") %>%
   mutate(Year = str_sub(Date.Administered, 7, 10)) %>%
@@ -23,7 +37,6 @@ df <- read.csv("docs/COVID-19_Vaccination_and_Case_Trends.csv") %>%
   )
 df$Date.Administered <- NULL
 df$Date <- as.Date(df$Date, format = "%m/%d")
-
 
 
 ## Histogram data
@@ -49,6 +62,18 @@ blank_theme <- theme_bw() +
 
 # Start shinyServer -----------------------------------------------------------
 server <- function(input, output) {
+  ## Map ---------------------------
+  date <- unique(closure$Date)
+  map <- plot_ly(
+    closure,
+    type = "choropleth",
+    locations = ~ closure$ISO,
+    z = ~ closure$Status_num,
+    text = paste("Country: ", closure$Country, "<br>Status:", closure$Status)
+  ) %>%
+    layout(title = paste("School Closure at", date))
+  return(map)
+
   ## Timeline ---------------------------
   output$Timeline <- renderPlotly({
     data <- df %>%
@@ -66,22 +91,21 @@ server <- function(input, output) {
 
   ## Histogram ---------------------------
   output$schoolClosure <- renderPlotly({
-    
     data <- closure_duration %>%
       top_n(input$top, wt = full_closure_inweeks)
-    
-    closure_plot <- ggplot(data = data) + 
+
+    closure_plot <- ggplot(data = data) +
       geom_col(aes(x = country_name, y = full_closure_inweeks, fill = "red")) +
       coord_flip() +
-      xlab("Country") + 
+      xlab("Country") +
       ylab("Weeks") +
-      ggtitle(paste("Top ", input$top, "Countries with Longest School Closure "))  + 
+      ggtitle(paste("Top ", input$top, "Countries with Longest School Closure ")) +
       scale_fill_manual(values = c("orange4")) +
       blank_theme +
-      theme(legend.position="none") 
-    
+      theme(legend.position = "none")
+
     closure_plotly <- ggplotly(closure_plot)
-    
+
     return(closure_plotly)
   })
 
@@ -94,12 +118,12 @@ server <- function(input, output) {
       group_by(Entity) %>%
       summarise(Day = n()) %>%
       sample_n(input$slider1) # input$countrychoice
-    
+
     slider1 <- seq(0, 100, length.out = input$slider1 + 1)
-    
+
     pieplot <- plot_ly(country,
-                       labels = ~Entity,
-                       values = ~Day, type = "pie"
+      labels = ~Entity,
+      values = ~Day, type = "pie"
     ) %>%
       layout(
         title = "Countries with most accessible testing policy, by day",
@@ -107,6 +131,5 @@ server <- function(input, output) {
         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE)
       )
     return(pieplot)
-    
   })
 }

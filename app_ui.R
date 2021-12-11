@@ -1,4 +1,5 @@
 library(shiny)
+library(dplyr)
 library(plotly)
 
 # introduction
@@ -6,6 +7,7 @@ introductionTab <- tabPanel(
   "Introduction",
   titlePanel("Introduction"),
   h3("Covid Affecting Education"),
+  plotlyOutput("map"),
   p("Due to  the school closures during COVID-19, over a billion children are at
     risk of falling behind in school. To keep students safe, countries have implemented
     virtual learning and we believe that this change has affected countless students.
@@ -55,9 +57,9 @@ introductionTab <- tabPanel(
       tags$li("How did the number of new cases affect the recovery of education?"),
       tags$li("Did age group 12-17 or 18-24 have a higher percentage of the population
               who got Dose 1 of their Covid-19 vaccination?"),
-     )
     )
   )
+)
 
 # chart panel
 ## chart sidebar
@@ -87,7 +89,7 @@ timeline_panel <- tabPanel(
 )
 
 schoolClosureSidebar <- sidebarPanel(
-  sliderInput("top", "Select your top", min = 20, max = 40, value = 20) 
+  sliderInput("top", "Select your top", min = 20, max = 40, value = 20)
 )
 
 schoolClosureMain <- mainPanel(
@@ -106,17 +108,18 @@ schoolPanel <- tabPanel(
 
 
 testingPolicies <- sidebarPanel(
-  sliderInput("slider1", label = h3("Amount of Countries"), min = 0, 
-              max = 100, value = 10)
+  sliderInput("slider1",
+    label = h3("Amount of Countries"), min = 0,
+    max = 100, value = 10
+  )
 )
 
 testingPoliciesMain <- mainPanel(
   plotlyOutput("pie"),
-  
   p("This pie chart is depicting the countries who have held
-    the highest level of Covid Testing policies (3), which 
-    means that tests are avaliable to everyone, whether they 
-    have symptoms or not. When you select a random amount of countries, 
+    the highest level of Covid Testing policies (3), which
+    means that tests are avaliable to everyone, whether they
+    have symptoms or not. When you select a random amount of countries,
     you can see which ones have held this universal policy for the longest.")
 )
 
@@ -152,7 +155,7 @@ conclusionTab <- tabPanel(
   a lot of countries like Austrailia still had more limited testing
   options overtime. One finding that we found surprising was that France was one
   of the countries that had one of the longest school closures, while also
-  having high test policies. This means that having more access to Covid 
+  having high test policies. This means that having more access to Covid
   testing didn't necessarily guarentee short school closures.")
 )
 
