@@ -66,21 +66,22 @@ server <- function(input, output) {
 
   ## Histogram ---------------------------
   output$schoolClosure <- renderPlotly({
+    
     data <- closure_duration %>%
       top_n(input$top, wt = full_closure_inweeks)
-
-    closure_plot <- ggplot(data = data) +
+    
+    closure_plot <- ggplot(data = data) + 
       geom_col(aes(x = country_name, y = full_closure_inweeks, fill = "red")) +
       coord_flip() +
-      xlab("Country") +
+      xlab("Country") + 
       ylab("Weeks") +
-      ggtitle(paste("Top ", input$top, "Countries with Longest School Closure ")) +
+      ggtitle(paste("Top ", input$top, "Countries with Longest School Closure "))  + 
       scale_fill_manual(values = c("orange4")) +
       blank_theme +
-      theme(legend.position = "none")
-
+      theme(legend.position="none") 
+    
     closure_plotly <- ggplotly(closure_plot)
-
+    
     return(closure_plotly)
   })
 

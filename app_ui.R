@@ -121,15 +121,7 @@ timeline_panel <- tabPanel(
 )
 
 schoolClosureSidebar <- sidebarPanel(
-  selectInput(
-    inputId = "top",
-    label = "the top",
-    choices = list(
-      "20" = "20",
-      "40" = "40"
-    ),
-    selected = "20"
-  )
+  sliderInput("top", "Select your top", min = 20, max = 40, value = 20) 
 )
 
 schoolClosureMain <- mainPanel(
@@ -157,7 +149,7 @@ testingPoliciesMain <- mainPanel(
 )
 
 testingPanel <- tabPanel(
-  "Highest Testing Policies",
+  "Testing Policies",
   titlePanel("Highest Testing Policies"),
   testingPolicies,
   testingPoliciesMain
