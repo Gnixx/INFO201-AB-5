@@ -108,15 +108,7 @@ timeline_panel <- tabPanel(
 )
 
 schoolClosureSidebar <- sidebarPanel(
-  selectInput(
-    inputId = "top",
-    label = "the top",
-    choices = list(
-      "20" = "20",
-      "40" = "40"
-    ),
-    selected = "20"
-  )
+  sliderInput("top", "Select your top", min = 20, max = 40, value = 20) 
 )
 
 schoolClosureMain <- mainPanel(
@@ -140,11 +132,17 @@ testingPolicies <- sidebarPanel(
 )
 
 testingPoliciesMain <- mainPanel(
-  plotlyOutput("pie")
+  plotlyOutput("pie"),
+  
+  p("This pie chart is depicting the countries who have held
+    the highest level of Covid Testing policies (3), which 
+    means that tests are avaliable to everyone, whether they 
+    have symptoms or not. When you select a random amount of countries, 
+    you can see which ones have held this universal policy for the longest.")
 )
 
 testingPanel <- tabPanel(
-  "Highest Testing Policies",
+  "Testing Policies",
   titlePanel("Highest Testing Policies"),
   testingPolicies,
   testingPoliciesMain
