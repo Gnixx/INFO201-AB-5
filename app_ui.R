@@ -135,7 +135,7 @@ testingPanel <- tabPanel(
 conclusionTab <- tabPanel(
   "Conclusion",
   titlePanel(h3("Conclusion")),
-  plotlyOutput("map"),
+  plotOutput("map"),
   p("One key takeaway from the school closures dataset was how the data
   collected is not always what you expect it to be. For example, looking at
   the top 20 countries with school closures, we were looking for any patterns

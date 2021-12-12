@@ -9,9 +9,9 @@ library(readr)
 source("school_info.R")
 
 # Read in data ----------------------------------------------------------------
-## Map data
-closure <- read.csv("docs/Closure Status.csv") %>%
-   mutate(Date = as.Date(Date, "%d/%m"))
+# Map data
+closure <- read.csv("./Closure Status.csv") %>%
+  mutate(Date = as.Date(Date, "%d/%m"))
 
 
 ## Timeline data
@@ -53,22 +53,22 @@ blank_theme <- theme_bw() +
 
 # Start shinyServer -----------------------------------------------------------
 server <- function(input, output) {
-  ## Map ---------------------------
-  world_map <- map_data("world") %>%
-     rename(Country = region) %>%
-     left_join(closure, by = "Country")
-  map <- ggplot(world_map) +
-     geom_polygon(
+  # Map ---------------------------
+  output$map <- renderPlot({
+    world_map <- map_data("world") %>%
+      rename(Country = region) %>%
+      left_join(closure, by = "Country")
+    mapPlot <- ggplot(world_map) +
+      geom_polygon(
         mapping = aes(x = long, y = lat, group = group, fill = Status),
         color = "white",
         size = .1
-     ) +
-     # coord_map() +
-     #scale_fill_discrete("Purples") +
-     scale_fill_manual(values = c("tan2", "tan4", "tan1", "tan3")) +
-     labs(fill = "status") +
-     ggtitle("School Closure at 2021-02-07 UTC")
-  map
+      ) +
+      scale_fill_manual(values = c("tan2", "tan4", "tan1", "tan3")) +
+      labs(fill = "status") +
+      ggtitle("School Closure at 2021-02-07 UTC")
+    return(mapPlot)
+  })
 
   ## Timeline ---------------------------
   output$Timeline <- renderPlotly({
@@ -87,10 +87,10 @@ server <- function(input, output) {
 
   ## Histogram ---------------------------
   output$schoolClosure <- renderPlotly({
-    data <- closure_duration %>%
+     closure_data <- closure_duration %>%
       top_n(input$top, wt = full_closure_inweeks)
 
-    closure_plot <- ggplot(data = data) +
+    closure_plot <- ggplot(data = closure_data) +
       geom_col(aes(x = country_name, y = full_closure_inweeks, fill = "red")) +
       coord_flip() +
       xlab("Country") +
@@ -109,7 +109,7 @@ server <- function(input, output) {
   # ## pie ---------------------------
   output$pie <- renderPlotly({
     ## Piechart data
-    country <- read.csv("covid-19-testing-policy.csv") %>%
+    pie_data <- read.csv("covid-19-testing-policy.csv") %>%
       filter(testing_policy == "3") %>%
       group_by(Entity) %>%
       summarise(Day = n()) %>%
@@ -117,7 +117,7 @@ server <- function(input, output) {
 
     slider1 <- seq(0, 100, length.out = input$slider1 + 1)
 
-    pieplot <- plot_ly(country,
+    pieplot <- plot_ly(pie_data,
       labels = ~Entity,
       values = ~Day, type = "pie"
     ) %>%
