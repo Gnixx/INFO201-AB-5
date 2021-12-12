@@ -6,7 +6,7 @@ library(plotly)
 introductionTab <- tabPanel(
   "Introduction",
   titlePanel(h3("Introduction: Covid Affecting Education")),
-  img(src = "COVID-19.jpeg", width = 900, 
+  img(src = "COVID-19.png", width = 900, 
       style="display: block; margin-left: auto; margin-right: auto;"),
   p(),
   p("Due to  the school closures during COVID-19, over a billion children are at

@@ -5,9 +5,9 @@ account: gnixx
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 5298121
-bundleId: 5361569
+bundleId: 5361612
 url: https://gnixx.shinyapps.io/INFO201-AB-5/
-when: 1639287471.13661
-lastSyncTime: 1639287471.13662
+when: 1639288614.20331
+lastSyncTime: 1639288614.20334
 asMultiple: FALSE
 asStatic: FALSE
