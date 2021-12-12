@@ -6,13 +6,16 @@ library(plotly)
 introductionTab <- tabPanel(
   "Introduction",
   titlePanel(h3("Introduction: Covid Affecting Education")),
-  img(src = "COVID-19.png", height = 140, width = 400),
+  img(src = "COVID-19.jpeg", width = 900, 
+      style="display: block; margin-left: auto; margin-right: auto;"),
+  p(),
   p("Due to  the school closures during COVID-19, over a billion children are at
     risk of falling behind in school. To keep students safe, countries have implemented
     virtual learning and we believe that this change has affected countless students.
     Our group wanted to explore this domain more, as we are all students pursuing higher
     education. We tried to look at the impacts of COVID-19 on the global education
-    system to see if there were any national trends correlated with Covid-19."),
+    system to see if there were any national trends correlated with Covid-19.", 
+    align = "center"),
   p(strong("There are some data-driven questions we wish to answer:")),
   tags$ul(
     tags$li(p("How did students perform during school closures?")),
